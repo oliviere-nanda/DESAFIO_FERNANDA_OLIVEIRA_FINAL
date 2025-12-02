@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="left">
+    <img src="img/ranger.png" class="car-img" />
+  </div>
+
+  <div class="right">
+    <img src="img/ford.png" class="logo" />
+
+    <h2>Boas-vindas</h2>
+
+    <form (ngSubmit)="login()" [formGroup]="form">
+      <div class="input-box">
+        <i class="icon">👤</i>
+        <input
+          formControlName="nome"
+          type="text"
+          placeholder="Insira seu e-mail"
+        />
+      </div>
+
+      <div class="input-box">
+        <i class="icon">🔒</i>
+        <input
+          formControlName="senha"
+          type="password"
+          placeholder="Insira sua senha"
+        />
+      </div>
+
+      <div class="check-row">
+        <input type="checkbox" formControlName="autoLogin" />
+        <label>Logar automaticamente</label>
+      </div>
+
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+
+    <!-- mensagens -->
+    <p class="msg erro" *ngIf="erro">{{ erro }}</p>
+    <p class="msg sucesso" *ngIf="sucesso">{{ sucesso }}</p>
+  </div>
+</div>

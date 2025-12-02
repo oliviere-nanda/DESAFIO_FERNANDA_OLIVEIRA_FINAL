@@ -1,0 +1,149 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ------------------------------- */
+/*       TOPO COM HAMBURGUER       */
+/* ------------------------------- */
+.top-bar {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  background: white;
+  box-shadow: 0 2px 4px #00000020;
+  position: relative;
+  z-index: 10;
+}
+
+.hamburger {
+  font-size: 26px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: #4f4f4f;
+}
+
+.logo {
+  width: 95px;
+}
+
+/* ------------------------------- */
+/*           MENU LATERAL          */
+/* ------------------------------- */
+
+.side-menu {
+  width: 230px;
+  height: 100%;
+  background: white;
+  position: fixed;
+  top: 55px;
+  left: -240px;
+  transition: 0.3s;
+  box-shadow: 3px 0 6px #00000020;
+  z-index: 20;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 15px;
+}
+
+.side-menu li {
+  padding: 12px;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.side-menu li:hover,
+.side-menu li.active {
+  background: #e8efea;
+  color: #0a8a68;
+  font-weight: bold;
+}
+
+/* ------------------------------- */
+/*              OVERLAY            */
+/* ------------------------------- */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 15;
+}
+
+/* ------------------------------- */
+/*          CAIXA CENTRAL          */
+/* ------------------------------- */
+
+.content-box {
+  width: 370px;
+  height: 280px;
+  background: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  padding: 25px;
+  border: 1px solid #999;
+  backdrop-filter: blur(2px);
+}
+
+.content-box h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #3a3a3a;
+}
+
+.content-box p {
+  font-size: 16px;
+  color: #0a8a68;
+  font-weight: bold;
+}
+
+/* ------------------------------- */
+/*          IMAGEM FUNDO           */
+/* ------------------------------- */
+
+.bg-car {
+  width: 68%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.85;
+  z-index: -1;
+}
+
+/* ------------------------------- */
+/*            CAROUSEL             */
+/* ------------------------------- */
+
+.carousel-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 16px;
+  width: 100%;
+}

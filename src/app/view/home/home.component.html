@@ -1,0 +1,34 @@
+
+  <!-- MENU SUPERIOR -->
+  <header class="top-bar">
+    <i class="hamburger" (click)="toggleMenu()">☰</i>
+    <img src="img/ford.png" class="logo" />
+  </header>
+
+  <!-- MENU LATERAL -->
+  <nav class="side-menu" [class.open]="menuAberto">
+    <ul>
+      <li routerLink="/home" routerLinkActive="active">Home</li>
+      <li routerLink="/dashboard" routerLinkActive="active">Dashboard</li>
+           <li routerLink="/contact" routerLinkActive="active">Contact</li>
+
+    </ul>
+  </nav>
+
+  <!-- OVERLAY ESCURO -->
+  <div 
+    class="overlay" 
+    *ngIf="menuAberto" 
+    (click)="toggleMenu()">
+  </div>
+
+  <!-- CONTEÚDO CENTRAL -->
+  <div class="content-box" style="z-index: 1;">
+    <h3>Sistema de dados FORD</h3>
+    <p>Seja bem vindo(a)!</p>
+  </div>
+
+  <div style="display: flex; justify-content: center;width: 100%; z-index: -1;">
+    <app-carousel style="width: 70%;"></app-carousel>
+  </div>
+

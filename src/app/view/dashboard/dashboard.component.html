@@ -1,0 +1,102 @@
+
+  <!-- TOPO -->
+  <header class="top-bar">
+    <i class="hamburger" (click)="toggleMenu()">☰</i>
+    <img src="img/ford.png" class="logo" />
+  </header>
+
+  <!-- MENU LATERAL -->
+  <nav class="side-menu" [class.open]="menuAberto">
+    <ul>
+      <li routerLink="/home" routerLinkActive="active">Home</li>
+      <li routerLink="/dashboard" routerLinkActive="active">Dashboard</li>
+     <li routerLink="/contact" routerLinkActive="active">Contact</li>
+
+    </ul>
+  </nav>
+
+  <!-- OVERLAY -->
+  <div class="overlay" *ngIf="menuAberto" (click)="toggleMenu()"></div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="main-area">
+    <h1 class="titulo">Dashboard FORD</h1>
+
+    <!-- BLOCOS SUPERIORES (4 colunas) -->
+    <section class="top-cards">
+
+      <!-- BLOCO 1: SELECT -->
+      <div class="card card-select">
+        <label>Veículo</label>
+        <select [(ngModel)]="selectedVehicleId" (change)="onSelectVehicle()">
+          <option *ngFor="let v of vehicles" [value]="v.id">
+            {{ v.vehicle }}
+          </option>
+        </select>
+      </div>
+
+      <!-- BLOCO 2 -->
+      <div class="card">
+        <small>Total de Vendas</small>
+        <div class="big">{{ selectedVehicle?.volumetotal ?? '-' }}</div>
+        <small class="unit">Unid</small>
+      </div>
+
+      <!-- BLOCO 3 -->
+      <div class="card">
+        <small>Conectados</small>
+        <div class="big">{{ selectedVehicle?.connected ?? '-' }}</div>
+        <small class="unit">Unid</small>
+      </div>
+
+      <!-- BLOCO 4 -->
+      <div class="card">
+        <small>Update Software</small>
+        <div class="big">{{ selectedVehicle?.softwareUpdates ?? '-' }}</div>
+        <small class="unit">Unid</small>
+      </div>
+    </section>
+
+    <!-- IMAGEM DO VEÍCULO (centrada abaixo dos cards) -->
+    <section class="vehicle-image">
+      <img *ngIf="selectedVehicle" [src]="selectedVehicle.img" alt="Veículo" />
+    </section>
+
+    <!-- TABELA INFERIOR: UMA LINHA -->
+    <section class="table-wrap">
+      <table class="dados-tabela">
+        <thead>
+          <tr>
+            <th style="width:32%;">Código - Vin</th>
+            <th>Odômetro</th>
+            <th>Nível de Combustível</th>
+            <th>Status</th>
+            <th>Lat</th>
+            <th>Long</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <!-- VIN input: ao digitar chama a API (com debounce) -->
+            <td>
+              <input
+                type="text"
+                placeholder="Digite o VIN e aguarde..."
+                [(ngModel)]="vinInput"
+                (input)="onVinInput()"
+                class="vin-input"
+              />
+              <div class="small-hint">VIN atual: <strong>{{ currentVin }}</strong></div>
+            </td>
+
+            <td>{{ vehicleData?.odometro ? (vehicleData.odometro + ' Km') : '-' }}</td>
+            <td>{{ vehicleData?.nivelCombustivel ? (vehicleData.nivelCombustivel + ' %') : '-' }}</td>
+            <td>{{ vehicleData?.status ?? '-' }}</td>
+            <td>{{ vehicleData?.lat ?? '-' }}</td>
+            <td>{{ vehicleData?.long ?? '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>

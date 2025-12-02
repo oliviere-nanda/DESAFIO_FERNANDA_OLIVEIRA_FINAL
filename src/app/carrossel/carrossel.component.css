@@ -1,0 +1,75 @@
+div#carousel {
+  height: 100vh;
+  width: 100%;
+  max-height: 628px;
+  transition: all .3s ease-in-out;
+}
+
+div#carousel-title a {
+  text-decoration: none;
+}
+
+div#carousel-title {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* imagem encima, legenda abaixo */
+  width: 100%;
+}
+
+.carousel {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 900px; /* ajuste conforme o layout */
+}
+
+.carousel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Setas centralizadas verticalmente e posicionadas junto ao carrossel */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* distância das laterais — ajuste para telas pequenas */
+.carousel-arrow.left  { left: 8px; }
+.carousel-arrow.right { right: 8px; }
+
+/* Legenda centralizada abaixo da imagem */
+.carousel-caption {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  color: #222;
+  font-size: 1rem;
+}
+/* Responsividade simples */
+@media (max-width: 480px) {
+  .carousel-arrow.left { left: 4px; }
+  .carousel-arrow.right { right: 4px; }
+  .carousel-arrow { padding: 6px; }
+}

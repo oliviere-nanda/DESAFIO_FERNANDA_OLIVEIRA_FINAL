@@ -1,0 +1,51 @@
+<!-- MENU SUPERIOR -->
+<header class="top-bar">
+  <i class="hamburger" (click)="toggleMenu()">☰</i>
+  <img src="img/ford.png" class="logo" />
+</header>
+
+<!-- MENU LATERAL -->
+<nav class="side-menu" [class.open]="menuAberto">
+  <ul>
+    <li routerLink="/home" routerLinkActive="active">Home</li>
+    <li routerLink="/dashboard" routerLinkActive="active">Dashboard</li>
+    <li routerLink="/contact" routerLinkActive="active">Contact</li>
+  </ul>
+</nav>
+
+<!-- OVERLAY -->
+<div class="overlay" *ngIf="menuAberto" (click)="toggleMenu()"></div>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<main class="container">
+
+  <div class="form-card">
+
+    <div class="image-area">
+      <img src="img/mustang.png" class="car-image">
+    </div>
+
+    <div class="form-area">
+      <h2 class="titulo">Sobre Você</h2>
+
+      <form (ngSubmit)="enviarFormulario()" #formFord="ngForm">
+
+        <input type="text" name="nome" ngModel placeholder="Nome *" class="input" required>
+        <input type="email" name="email" ngModel placeholder="E-mail *" class="input" required>
+        <input type="text" name="cpf" ngModel placeholder="CPF *" class="input" required>
+        <input type="text" name="sobrenome" ngModel placeholder="Sobrenome *" class="input" required>
+        <input type="text" name="telefone" ngModel placeholder="Telefone *" class="input" required>
+
+        <select name="contato" ngModel class="input select" required>
+          <option disabled selected value="">Como deseja ser contatado?</option>
+          <option>Telefone</option>
+          <option>E-mail</option>
+        </select>
+
+        <button type="submit" class="btn-enviar">Enviar</button>
+      </form>
+    </div>
+
+  </div>
+
+</main>
